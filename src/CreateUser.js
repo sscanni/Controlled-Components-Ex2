@@ -19,14 +19,29 @@ class CreateUser extends React.Component {
     this.setState({ last: event.target.value });
   };
 
+  InputHasErrors = () => {
+    let editError = false;
+    if (this.props.userExist(this.state.userid)) {
+      this.props.setErrorMsg(true)
+      editError = true;
+    } 
+    if (this.state.first === '' || this.state.last === '') {
+      this.props.setErrorMsg(true)
+      editError = true;
+    } 
+    return editError;
+  };
+
   addItem = event => {
     event.preventDefault();
-    if (!this.props.userExist(this.state.userid)) {
-        let item = {userid: this.state.userid, 
-                     first: this.state.first,
-                     last: this.state.last,
-                     games: 0}
-        this.props.onAddItem(item);
+    if (!this.InputHasErrors()) {
+      let item = {userid: this.state.userid, 
+                  first: this.state.first,
+                    last: this.state.last,
+                  games: 0}
+      this.props.onAddItem(item);
+      this.props.setErrorMsg(false);
+      this.props.setErrorMsg(false);
     }
   };
 
@@ -76,5 +91,6 @@ class CreateUser extends React.Component {
 CreateUser.propTypes = {
   onAddItem: PropTypes.func.isRequired,
   userExist: PropTypes.func.isRequired,
+  setErrorMsg: PropTypes.func.isRequired,
 };
 export default CreateUser;

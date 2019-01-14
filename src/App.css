@@ -30,3 +30,9 @@
     transform: rotate(360deg);
   }
 }
+.hidden { display:none; }
+
+#errorMsg {
+  color: red;
+  font-weight: bold;
+}
