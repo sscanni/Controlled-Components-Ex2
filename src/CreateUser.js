@@ -11,6 +11,7 @@ class CreateUser extends React.Component {
 
   userChange = event => {
     this.setState({ userid: event.target.value });
+    this.props.setErrorMsg(false);
   };
   firstChange = event => {
     this.setState({ first: event.target.value });

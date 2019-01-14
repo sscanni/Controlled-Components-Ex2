@@ -9,7 +9,7 @@ logic (presentational components) into stateless functional components.
 const ErrorMessage = props => {
   return (
     <div>
-      <p id="errorMsg" className={props.shouldHide ? 'hidden' : ''}>Error: User ID is already being used. Please enter a different User ID.</p>
+      <p id="errorMsg" className={props.displayError ? '' : 'hidden'}>Error: User ID is already being used. Please enter a different User ID.</p>
   	</div>
   );
 };

@@ -8,7 +8,7 @@ import ListUsers from './ListUsers';
 class App extends Component {
   state = {
     items: [],
-    shouldHide: "hidden",
+    displayError: false,
   };
   
   addItem = item => {
@@ -16,12 +16,8 @@ class App extends Component {
       items: [...prevState.items, item] }));
   };
 
-  setErrorMsg = showFlag => {
-    if (showFlag) {
-      this.setState({ shouldHide: "" });
-    } else {
-      this.setState({ shouldHide: "hidden" });
-    }
+  setErrorMsg = displayFlag => {
+      this.setState({ displayError: displayFlag });
   };
 
   userExist = (usrID) => {
@@ -37,7 +33,7 @@ class App extends Component {
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
         <CreateUser onAddItem={this.addItem} userExist={this.userExist} setErrorMsg={this.setErrorMsg}/>
-        <ErrorMessage shouldHide={this.state.shouldHide} />
+        <ErrorMessage displayError={this.state.displayError} />
         <ListUsers items={this.state.items} />
       </div>
     );
