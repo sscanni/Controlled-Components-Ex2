@@ -15,7 +15,7 @@ class App extends Component {
   };
 
   userExist = (usrID) => {
-    const result = this.state.items.filter(item => item[0] === usrID);
+    const result = this.state.items.filter(item => item.userid === usrID);
     return result.length > 0;
   };
 

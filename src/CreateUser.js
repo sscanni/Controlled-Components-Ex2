@@ -22,11 +22,10 @@ class CreateUser extends React.Component {
   addItem = event => {
     event.preventDefault();
     if (!this.props.userExist(this.state.userid)) {
-        let item = []
-        item.push(this.state.userid)
-        item.push(this.state.first)
-        item.push(this.state.last)
-        console.log(item);
+        let item = {userid: this.state.userid, 
+                     first: this.state.first,
+                     last: this.state.last,
+                     games: 0}
         this.props.onAddItem(item);
     }
   };

@@ -16,11 +16,13 @@ const ListUsers = props => {
         <th>User ID</th>
         <th>First Name</th>
         <th>Last Name</th>
+        <th>Games Played</th>
        </tr>
         {props.items.map((item, index) => <tr key={index}>
-            <td>{ item[0] }</td>
-            <td>{ item[1] }</td>
-            <td>{ item[2] }</td>
+            <td>{ item.userid }</td>
+            <td>{ item.first }</td>
+            <td>{ item.last }</td>
+            <td>{ item.games }</td>
         </tr>)}
         </tbody>
       </table>
