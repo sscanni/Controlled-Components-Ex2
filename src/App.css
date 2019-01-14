@@ -36,3 +36,13 @@
   color: red;
   font-weight: bold;
 }
+
+.item-list {
+  margin-top: 20px;
+}
+
+hr {
+  width:70%; 
+  margin-left:15%; 
+  margin-right:15%;
+}
