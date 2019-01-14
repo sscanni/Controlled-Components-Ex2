@@ -19,34 +19,22 @@ class CreateUser extends React.Component {
     this.setState({ last: event.target.value });
   };
 
-  InputHasErrors = () => {
-    let editError = false;
-    if (this.props.userExist(this.state.userid)) {
-      this.props.setErrorMsg(true)
-      editError = true;
-    } 
-    if (this.state.first === '' || this.state.last === '') {
-      this.props.setErrorMsg(true)
-      editError = true;
-    } 
-    return editError;
-  };
-
   addItem = event => {
     event.preventDefault();
-    if (!this.InputHasErrors()) {
-      let item = {userid: this.state.userid, 
-                  first: this.state.first,
-                    last: this.state.last,
-                  games: 0}
-      this.props.onAddItem(item);
-      this.props.setErrorMsg(false);
-      this.props.setErrorMsg(false);
+    if (this.props.userExist(this.state.userid)) {
+        this.props.setErrorMsg(true)
+    } else {
+        let item = {userid: this.state.userid, 
+                    first: this.state.first,
+                      last: this.state.last,
+                    games: 0}
+        this.props.onAddItem(item);
+        this.props.setErrorMsg(false);
     }
   };
 
   inputIsEmpty = () => {
-    return this.state.userid === '';
+    return (this.state.userid === '' || this.state.first === '' || this.state.last === '');
   };
 
   noItemsFound = () => {
